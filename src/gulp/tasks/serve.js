@@ -48,7 +48,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
         // context: '/' will proxy all requests
         //     use: '/api' to proxy request when path starts with '/api'
         let proxy = proxyMiddleware(options.proxy.api, {
-            target: options.proxy.target,
+            target: options.proxy.target + ':' + options.proxy.port,
             changeOrigin: true   // for vhosted sites, changes host header to match to target's host
         });
 
