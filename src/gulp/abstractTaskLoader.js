@@ -19,6 +19,7 @@ export default class AbstractTaskLoader {
      * Register a task in the provided gulp object.
      * @param gulp the gulp object where the task should be registered
      */
+    // registerTask(gulp, options){
     registerTask(gulp){
         "use strict";
 

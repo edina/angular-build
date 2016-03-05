@@ -10,8 +10,8 @@ import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w
 //import debug from "gulp-debug";
 
 class ServeTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         let runSequence = require("run-sequence");
 

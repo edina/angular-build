@@ -9,8 +9,8 @@ const browserSync = require("browser-sync").create(config.webServerNames.dist);
 import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 
 class ServeDistTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         let runSequence = require("run-sequence");
 

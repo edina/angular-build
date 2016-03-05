@@ -7,8 +7,8 @@ import config from "../config";
 import packageJsonValidator from "gulp-nice-package";
 
 class PackageJSONTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("validate-package-json", "Validate the package.json file", () =>{
             return gulp.plumbedSrc(config.files.packageJSON)

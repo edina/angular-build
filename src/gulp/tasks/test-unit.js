@@ -9,8 +9,8 @@ let KarmaServer = require("karma").Server; // TODO replace by import {Server as 
 let path = require("path");
 
 class TestUnitTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         let runSequence = require("run-sequence");
 

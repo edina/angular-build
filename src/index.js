@@ -44,7 +44,7 @@ class TasksLoader {
 
                 if(loadedModule.registerTask){
                     //console.log(`Registering module: ${key}`);
-                    loadedModule.registerTask(gulp);
+                    loadedModule.registerTask(gulp, options);
                 } else{
                     throw new TypeError(`The following module does not expose the expected interface: ${key}`);
                 }

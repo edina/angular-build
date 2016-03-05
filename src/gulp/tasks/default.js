@@ -5,8 +5,8 @@ import AbstractTaskLoader from "../abstractTaskLoader";
 //import utils from "../utils";
 
 class DefaultTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         let runSequence = require("run-sequence");
 

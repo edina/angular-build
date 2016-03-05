@@ -13,8 +13,8 @@ import size from "gulp-size";
 //import debug from "gulp-debug";
 
 class StylesVendorDistTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("styles-vendor-dist", "Optimize and minimize vendor stylesheets for production", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)([

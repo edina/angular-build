@@ -14,8 +14,8 @@ import size from "gulp-size";
 let browserSync = require("browser-sync").get(config.webServerNames.dev);
 
 class StylesTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("styles", "Compile, add vendor prefixes and generate sourcemaps", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)

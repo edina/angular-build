@@ -14,8 +14,8 @@ import gutil from "gulp-util";
 //import debug from "gulp-debug";
 
 class HtmlTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("html", "Optimize HTML", () =>{
             // Determine if the inlined scripts should be minified or not

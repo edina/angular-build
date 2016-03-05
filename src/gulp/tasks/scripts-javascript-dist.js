@@ -10,8 +10,8 @@ import path from "path";
 import gutil from "gulp-util";
 
 class ScriptsJavaScriptDistTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("scripts-javascript-dist", "Package all JavaScript code for production", () =>{
             // Assuming that all TS and ES2015 code has already been converted to ES5 using the System module type

@@ -12,8 +12,8 @@ import minifyCss from "gulp-minify-css";
 import size from "gulp-size";
 
 class StylesDistTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("styles-dist", "Optimize and minimize stylesheets for production", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)

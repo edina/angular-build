@@ -10,8 +10,8 @@ import browserSync from "browser-sync";
 
 class CheckJsQualityTaskLoader extends AbstractTaskLoader {
 
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("check-js-quality", "Check JavaScript code quality using JSHint", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)

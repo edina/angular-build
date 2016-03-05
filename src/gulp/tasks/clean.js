@@ -7,8 +7,8 @@ import config from "../config";
 import del from "del";
 
 class CleanTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp){
-        super.registerTask(gulp);
+    registerTask(gulp, options){
+        super.registerTask(gulp, options);
 
         gulp.task("clean", "Clean output directories", () =>{
             del([
