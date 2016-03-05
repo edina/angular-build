@@ -5,6 +5,7 @@ import config from "../config";
 import utils from "../utils";
 
 let browserSync = require("browser-sync").create(config.webServerNames.dev);
+let proxyMiddleware = require("http-proxy-middleware");
 
 import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 //import debug from "gulp-debug";
@@ -43,7 +44,15 @@ class ServeTaskLoader extends AbstractTaskLoader {
                 callback);
         });
 
-        let options = { // http://www.browsersync.io/docs/options/
+        // configure proxy middleware
+        // context: '/' will proxy all requests
+        //     use: '/api' to proxy request when path starts with '/api'
+        let proxy = proxyMiddleware(options.proxy.api, {
+            target: options.proxy.target,
+            changeOrigin: true   // for vhosted sites, changes host header to match to target's host
+        });
+
+        let browserSyncOptions = { // http://www.browsersync.io/docs/options/
             notify: false,
             //port: 8000,
 
@@ -64,7 +73,9 @@ class ServeTaskLoader extends AbstractTaskLoader {
                 //routes: alternative way to map content that is above the base dir
                 // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
                 // reference: https://github.com/BrowserSync/browser-sync/issues/204
+                // middleware: proxyMiddleware('/api', {target: 'http://localhost:8000'})
                 middleware: [
+                    proxy,
                     historyApiFallback(), // not necessary if the app uses hash based routing
                     function(req, res, next){
                         res.setHeader("Access-Control-Allow-Origin", "*"); // add CORS to the response headers (for resources served by BrowserSync)
@@ -76,7 +87,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
         };
 
         let startBrowserSync = () =>{
-            browserSync.init(utils.mergeOptions(options, gulp.options.browserSync));
+            browserSync.init(utils.mergeOptions(browserSyncOptions, gulp.options.browserSync));
 
             gulp.watch(config.html.src).on("change", browserSync.reload); // force a reload when html changes
             gulp.watch(config.styles.src, [ "styles" ]); // stylesheet changes will be streamed if possible or will force a reload
