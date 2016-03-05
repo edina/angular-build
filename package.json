@@ -1,20 +1,19 @@
 {
-  "name": "modern-web-dev-build",
-  "description": "Modern Web Development Build.",
-  "version": "0.5.0",
+  "name": "node-build",
+  "description": "Development Build based on ModernWebDevBuild.",
+  "version": "0.0.1",
   "author": {
-    "name": "Sebastien Dubois",
-    "email": "seb@dsebastien.net",
-    "url": "https://www.dsebastien.net/"
+    "name": "Mark Small",
+    "email": "marksmall@gmx.com"
   },
   "contributors": [],
-  "homepage": "https://npmjs.com/package/modern-web-dev-build",
+  "homepage": "https://github.com/marksmall/node-build",
   "private": false,
   "license": "MIT",
-  "bugs": "https://github.com/dsebastien/modernWebDevBuild/issues",
+  "bugs": "https://github.com/marksmall/node-build/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:dsebastien/modernWebDevBuild.git"
+    "url": "git@github.com:marksmall/node-build.git"
   },
   "keywords": [
     "web",
