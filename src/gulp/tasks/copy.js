@@ -9,8 +9,8 @@ import size from "gulp-size";
 //import debug from "gulp-debug";
 
 class CopyTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp, options){
-        super.registerTask(gulp, options);
+    registerTask(gulp){
+        super.registerTask(gulp);
 
         gulp.task("copy", "Copy all files except HTML/CSS/JS which are processed separately", () =>{
             return gulp.plumbedSrc(

@@ -12,8 +12,8 @@ import size from "gulp-size";
 let browserSync = require("browser-sync").get(config.webServerNames.dev);
 
 class TsLintTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp, options){
-        super.registerTask(gulp, options);
+    registerTask(gulp){
+        super.registerTask(gulp);
 
         gulp.task("ts-lint", "Lint TypeScript code", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)

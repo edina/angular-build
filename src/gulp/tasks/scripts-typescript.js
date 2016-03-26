@@ -10,8 +10,8 @@ import size from "gulp-size";
 //import debug from "gulp-debug";
 
 class ScriptsTypeScriptTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp, options){
-        super.registerTask(gulp, options);
+    registerTask(gulp){
+        super.registerTask(gulp);
 
         gulp.task("scripts-typescript", "Transpile TypeScript to ES, include references to library and app .d.ts files and generate sourcemaps", () =>{
             // references:

@@ -11,8 +11,8 @@ import size from "gulp-size";
 //import debug from "gulp-debug";
 
 class ImagesTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp, options){
-        super.registerTask(gulp, options);
+    registerTask(gulp){
+        super.registerTask(gulp);
 
         gulp.task("images", "Optimize images", () =>{
             return gulp.plumbedSrc(

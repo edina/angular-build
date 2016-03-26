@@ -11,8 +11,8 @@ import size from "gulp-size";
 //import debug from "gulp-debug";
 
 class ScriptsJavaScriptTaskLoader extends AbstractTaskLoader {
-    registerTask(gulp, options){
-        super.registerTask(gulp, options);
+    registerTask(gulp){
+        super.registerTask(gulp);
 
         gulp.task("scripts-javascript", "Transpile JavaScript (ES2015 to ES5 using Babel) and generate sourcemaps", () =>{
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
