@@ -16,8 +16,16 @@ class TsLintTaskLoader extends AbstractTaskLoader {
         super.registerTask(gulp);
 
         gulp.task("ts-lint", "Lint TypeScript code", () =>{
+            let src = null;
+
+            if(gulp.options.folders.app){
+                src = [ gulp.options.folders.app + config.globs.scripts.typescript ];
+            } else{
+                src = config.typescript.srcAppOnly;
+            }
+
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
-                config.typescript.srcAppOnly // only the application's code needs to be checked
+                src // only the application's code needs to be checked
                 )
 
                 // Display the files in the stream

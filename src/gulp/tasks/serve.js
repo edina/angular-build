@@ -47,10 +47,19 @@ class ServeTaskLoader extends AbstractTaskLoader {
         // configure proxy middleware
         // context: '/' will proxy all requests
         //     use: '/api' to proxy request when path starts with '/api'
-        let proxy = proxyMiddleware(options.proxy.api, {
-            target: options.proxy.target + ':' + options.proxy.port,
+        let proxy = proxyMiddleware(gulp.options.proxy.api, {
+            target: gulp.options.proxy.target + ":" + gulp.options.proxy.port,
             changeOrigin: true   // for vhosted sites, changes host header to match to target's host
         });
+
+        // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+        let baseDir = null;
+
+        if(gulp.options.folders.app){
+            baseDir = config.webServerFolders.dev.concat([ gulp.options.folders.app ]);
+        } else{
+            baseDir = config.webServerFolders.dev;
+        }
 
         let browserSyncOptions = { // http://www.browsersync.io/docs/options/
             notify: false,
@@ -69,7 +78,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
                 scroll: false
             },
             server: {
-                baseDir: config.webServerFolders.dev,
+                baseDir: baseDir,
                 //routes: alternative way to map content that is above the base dir
                 // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
                 // reference: https://github.com/BrowserSync/browser-sync/issues/204
@@ -86,18 +95,35 @@ class ServeTaskLoader extends AbstractTaskLoader {
             //reloadDebounce: 500 // restrict the frequency in which browser reload events can be emitted to connected clients
         };
 
+        // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+        let html = null;
+        let styles = null;
+        let typescript = null;
+        let javascript = null;
+        let images = null;
+
+        if(gulp.options.folders.app){
+            html = [ gulp.options.folders.app + config.globs.html ];
+            styles = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
+            typescript = [ gulp.options.folders.app + config.globs.scripts.typescript ];
+            javascript = [ gulp.options.folders.app + config.globs.scripts.javascript ];
+            images = [ gulp.options.folders.app + config.globs.images ];
+        } else{
+            html = config.html.src;
+            styles = config.styles.src;
+            typescript = config.typescript.srcAppOnly;
+            javascript = config.javascript.src;
+            images = config.images.src;
+        }
+
         let startBrowserSync = () =>{
             browserSync.init(utils.mergeOptions(browserSyncOptions, gulp.options.browserSync));
 
-            gulp.watch(config.html.src).on("change", browserSync.reload); // force a reload when html changes
-            gulp.watch(config.styles.src, [ "styles" ]); // stylesheet changes will be streamed if possible or will force a reload
-            gulp.watch(config.typescript.srcAppOnly, [
-                "serve-scripts-typescript"
-            ]); // TypeScript changes will force a reload
-            gulp.watch(config.javascript.src, [
-                "serve-scripts-javascript"
-            ]); // JavaScript changes will force a reload
-            gulp.watch(config.images.src).on("change", browserSync.reload); // force a reload when images change
+            gulp.watch(html).on("change", browserSync.reload); // force a reload when html changes
+            gulp.watch(styles, [ "styles" ]); // stylesheet changes will be streamed if possible or will force a reload
+            gulp.watch(typescript, [ "serve-scripts-typescript" ]); // TypeScript changes will force a reload
+            gulp.watch(javascript, [ "serve-scripts-javascript" ]); // JavaScript changes will force a reload
+            gulp.watch(images).on("change", browserSync.reload); // force a reload when images change
         };
 
         gulp.task("serve", "Watch files for changes and rebuild/reload automagically", () =>{

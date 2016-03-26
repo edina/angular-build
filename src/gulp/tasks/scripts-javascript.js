@@ -15,8 +15,17 @@ class ScriptsJavaScriptTaskLoader extends AbstractTaskLoader {
         super.registerTask(gulp);
 
         gulp.task("scripts-javascript", "Transpile JavaScript (ES2015 to ES5 using Babel) and generate sourcemaps", () =>{
+            // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+            let src = null;
+
+            if(gulp.options.folders.app){
+                src = [ gulp.options.folders.app + config.globs.scripts.javascript ];
+            } else{
+                src = config.javascript.src;
+            }
+
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
-                config.javascript.src
+                src
                 )
 
                 // Display the files in the stream

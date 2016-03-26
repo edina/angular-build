@@ -15,8 +15,17 @@ class ImagesTaskLoader extends AbstractTaskLoader {
         super.registerTask(gulp);
 
         gulp.task("images", "Optimize images", () =>{
+            // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+            let src = null;
+
+            if(gulp.options.folders.app){
+                src = [ gulp.options.folders.app + config.globs.images ];
+            } else{
+                src = config.images.src;
+            }
+
             return gulp.plumbedSrc(
-                config.images.src
+                src
                 )
                 // Filter out the empty directories
                 .pipe(utils.filterEmptyDirectories(eventStream))
