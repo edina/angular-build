@@ -47,10 +47,28 @@ class ServeTaskLoader extends AbstractTaskLoader {
         // configure proxy middleware
         // context: '/' will proxy all requests
         //     use: '/api' to proxy request when path starts with '/api'
-        let proxy = proxyMiddleware(gulp.options.proxy.api, {
-            target: gulp.options.proxy.target + ":" + gulp.options.proxy.port,
-            changeOrigin: true   // for vhosted sites, changes host header to match to target's host
-        });
+        let proxy = null;
+        let middleware = [
+            historyApiFallback(), // not necessary if the app uses hash based routing
+            function(req, res, next){
+                res.setHeader("Access-Control-Allow-Origin", "*"); // add CORS to the response headers (for resources served by BrowserSync)
+                next();
+            }
+        ];
+
+        if(gulp.options.proxy){
+            proxy = proxyMiddleware(gulp.options.proxy.api, {
+                target: gulp.options.proxy.target + ":" + gulp.options.proxy.port,
+                changeOrigin: true   // for vhosted sites, changes host header to match to target's host
+            });
+
+            middleware.unshift(proxy);
+        }
+
+        // let proxy = proxyMiddleware(gulp.options.proxy.api, {
+        //     target: gulp.options.proxy.target + ":" + gulp.options.proxy.port,
+        //     changeOrigin: true   // for vhosted sites, changes host header to match to target's host
+        // });
 
         // If the app src folder is overridden, then append it to the watch list, otherwise use default.
         let baseDir = null;
@@ -83,14 +101,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
                 // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
                 // reference: https://github.com/BrowserSync/browser-sync/issues/204
                 // middleware: proxyMiddleware('/api', {target: 'http://localhost:8000'})
-                middleware: [
-                    proxy,
-                    historyApiFallback(), // not necessary if the app uses hash based routing
-                    function(req, res, next){
-                        res.setHeader("Access-Control-Allow-Origin", "*"); // add CORS to the response headers (for resources served by BrowserSync)
-                        next();
-                    }
-                ]
+                middleware: middleware
             }//,
             //reloadDebounce: 500 // restrict the frequency in which browser reload events can be emitted to connected clients
         };
