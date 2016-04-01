@@ -131,7 +131,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
             browserSync.init(utils.mergeOptions(browserSyncOptions, gulp.options.browserSync));
 
             gulp.watch(html).on("change", browserSync.reload); // force a reload when html changes
-            gulp.watch(styles, [ "styles" ]); // stylesheet changes will be streamed if possible or will force a reload
+            gulp.watch(styles, [ "sass-lint", "styles" ]); // stylesheet changes will be streamed if possible or will force a reload
             gulp.watch(typescript, [ "serve-scripts-typescript" ]); // TypeScript changes will force a reload
             gulp.watch(javascript, [ "serve-scripts-javascript" ]); // JavaScript changes will force a reload
             gulp.watch(images).on("change", browserSync.reload); // force a reload when images change
