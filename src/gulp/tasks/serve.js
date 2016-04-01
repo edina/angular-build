@@ -150,6 +150,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
             ], [
                 "scripts-typescript",
                 "scripts-javascript",
+                "sass-lint",
                 "styles",
                 "validate-package-json"
             ]);

@@ -43,7 +43,7 @@ class StylesTaskLoader extends AbstractTaskLoader {
                 .pipe(sass({
                     style: "compressed"
                     //errLogToConsole: true
-                }))
+                }).on("error", sass.logError))
 
                 // Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
                 .pipe(sourcemaps.write(".", { // use "." to write the sourcemap to a separate file in the same dir
