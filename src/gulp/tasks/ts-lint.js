@@ -18,7 +18,7 @@ class TsLintTaskLoader extends AbstractTaskLoader {
         gulp.task("ts-lint", "Lint TypeScript code", () =>{
             let src = null;
 
-            if(gulp.options.folders.app){
+            if(gulp.options.folders){
                 src = [ gulp.options.folders.app + config.globs.scripts.typescript ];
             } else{
                 src = config.typescript.srcAppOnly;

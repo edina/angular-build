@@ -17,7 +17,7 @@ class CheckJsStyleTaskLoader extends AbstractTaskLoader {
             // If the app src folder is overridden, then append it to the watch list, otherwise use default.
             let src = null;
 
-            if(gulp.options.folders.app){
+            if(gulp.options.folders){
                 src = [ gulp.options.folders.app + config.globs.scripts.javascript ];
             } else{
                 src = config.javascript.src;

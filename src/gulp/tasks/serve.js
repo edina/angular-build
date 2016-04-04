@@ -73,7 +73,7 @@ class ServeTaskLoader extends AbstractTaskLoader {
         // If the app src folder is overridden, then append it to the watch list, otherwise use default.
         let baseDir = null;
 
-        if(gulp.options.folders.app){
+        if(gulp.options.folders){
             baseDir = config.webServerFolders.dev.concat([ gulp.options.folders.app ]);
         } else{
             baseDir = config.webServerFolders.dev;
@@ -113,13 +113,15 @@ class ServeTaskLoader extends AbstractTaskLoader {
         let javascript = null;
         let images = null;
 
-        if(gulp.options.folders.app){
+        if(gulp.options.folders){
+            console.log("FOLDER INCLUDED");
             html = [ gulp.options.folders.app + config.globs.html ];
             styles = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
             typescript = [ gulp.options.folders.app + config.globs.scripts.typescript ];
             javascript = [ gulp.options.folders.app + config.globs.scripts.javascript ];
             images = [ gulp.options.folders.app + config.globs.images ];
         } else{
+            console.log("FOLDER NOT INCLUDED");
             html = config.html.src;
             styles = config.styles.src;
             typescript = config.typescript.srcAppOnly;
