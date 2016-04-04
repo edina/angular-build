@@ -193,6 +193,13 @@ modernWebDevBuild.registerTasks(gulp, options);
 
 With the above, all the gulp tasks provided by ModernWebDevBuild will be available to you.
 
+To configure the build system you can override where the app src exists e.g.
+
+```
+options.folder = {};
+options.folders.app = '/path/to/src';
+```
+
 #### .jscsrc
 Valid configuration
 
