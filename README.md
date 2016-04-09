@@ -1,11 +1,12 @@
 # Web Dev Build System
 
-[![NPM version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/node-build-web-app)
-[![Downloads](https://img.shields.io/packagist/dm/doctrine/orm.svg)](https://www.npmjs.com/package/node-build-web-app)
-[![Build Status](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/msmall/node-build-web-app)
-[![Dependency Status](https://david-dm.org/marksmall/repo.svg)](https://david-dm.org/marksmall/node-build-web-app)
-[![devDependency Status](https://david-dm.org/msmall/node-build-web-app/dev-status.svg?theme=shields.io&style=flat)](https://david-dm.org/msmall/node-build-web-app#info=devDependencies)
-[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](LICENSE.MD)
+[![NPM version](https://img.shields.io/badge/npm-3.8.1-blue.svg)](https://www.npmjs.com/package/node-build-web-app)
+[![Downloads](https://img.shields.io/npm/dm/node-build-web-app.svg)](https://www.npmjs.com/package/node-build-web-app)
+[![GitHub issues](https://img.shields.io/github/issues/marksmall/node-build-web-app.svg)](https://github.com/marksmall/node-build-web-app/issues)
+[![Build Status](https://travis-ci.org/marksmall/node-build-web-app.svg?branch=master)](https://travis-ci.org/marksmall/node-build-web-app)
+[![Dependency Status](https://david-dm.org/marksmall/node-build-web-app.svg)](https://david-dm.org/marksmall/node-build-web-app)
+[![devDependency Status](https://david-dm.org/marksmall/node-build-web-app/dev-status.svg)](https://david-dm.org/marksmall/node-build-web-app#info=devDependencies)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/marksmall/node-build-web-app/master/LICENSE.MD)
 
 
 ## About
