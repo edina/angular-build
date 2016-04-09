@@ -1,48 +1,51 @@
-# Modern Web Dev Build
+# Web Dev Build System
 
-[![NPM version](https://img.shields.io/npm/v/modern-web-dev-build.svg)](https://www.npmjs.com/package/modern-web-dev-build)
-[![Downloads](https://img.shields.io/npm/dm/modern-web-dev-build.svg)](https://www.npmjs.com/package/modern-web-dev-build)
-[![Build Status](https://secure.travis-ci.org/dsebastien/modernWebDevBuild.png?branch=master)](https://travis-ci.org/dsebastien/modernWebDevBuild)
-[![Coverage Status](
-https://coveralls.io/repos/dsebastien/modernWebDevBuild/badge.svg?branch=master&service=github
-)](
-https://coveralls.io/github/dsebastien/modernWebDevBuild?branch=master
-)
-[![Dependency Status](https://david-dm.org/dsebastien/modernWebDevBuild.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/modernWebDevBuild)
-[![devDependency Status](https://david-dm.org/dsebastien/modernWebDevBuild/dev-status.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/modernWebDevBuild#info=devDependencies)
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg?style=flat)](https://gitter.im/dsebastien/modernWebDevBuild?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![NPM version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/node-build-web-app)
+[![Downloads](https://img.shields.io/packagist/dm/doctrine/orm.svg)](https://www.npmjs.com/package/node-build-web-app)
+[![Build Status](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/msmall/node-build-web-app)
+[![Dependency Status](https://david-dm.org/marksmall/repo.svg)](https://david-dm.org/marksmall/node-build-web-app)
+[![devDependency Status](https://david-dm.org/msmall/node-build-web-app/dev-status.svg?theme=shields.io&style=flat)](https://david-dm.org/msmall/node-build-web-app#info=devDependencies)
 [![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](LICENSE.MD)
 
+
 ## About
-A modern build for Web development.
+A build system for Angular 2 web app development using the Gulp build system. This module forked from
+[Modern Web Dev Build](https://www.npmjs.com/package/modern-web-dev-build). All kudos goes to Sebastien, I have just
+added features I tend to use.
 
-Get started and use ES2015, TypeScript, SASS, code quality & style checking, testing, minification, bundling and whatnot TODAY! :)
 
-ModernWebDevBuild abstracts away all the build pipeline boilerplate. Use it if you're not willing to dive too deep in the boring details of how to setup a proper build chain that takes care of transpiling, minifying, optimizing images and whatnot for production.
+## Added Features
 
-This project is very opinionated and technology choices are embedded. Although, the build is pretty flexible about code/assets organization (to some extent). Over time, it'll be interesting to see how customizable we can make this thing.
+### Proxy API Server
 
-The provided build tasks are based on [Gulp](http://gulpjs.com/). Instructions are available below to get you started.
+This was the primary feature I felt was missing, maybe I missed something and this isn't necessary but it is how I am
+familiar developing, so I forked the repository. The proxy server provides stubbed API calls to the back-end server.
+The proxy middleware is provided by [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware)
+and is configured and developed by the application project, not this package. I tend to use [express](https://www.npmjs.com/package/express), but that isn't crucial. To setup
+the proxy, add configuration to the **options** object in the project **gulpfile** e.g.
 
-This project is available as an npm package: https://www.npmjs.com/package/modern-web-dev-build
+```
+options.proxy = {
+	api: '/api',
+	target: 'http://localhost',
+	port: 8000
+};
+```
 
-## Demo
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Wc5iTInYOBw
-" target="_blank"><img src="http://img.youtube.com/vi/Wc5iTInYOBw/0.jpg"
-alt="ModernWebDev Build and Generator Demo" width="240" height="180" border="10" /></a>
+The *api* is the URL path to listen on e.g. `/api/init`, `/api/login` etc. The *target* and the *port* identify where
+to forward requests to. So, requests to `http://localhost:8000/api/login` would be sent to the proxy and the
+response from it returned to the application. This enables us to develop the front-end separately from the back-end
+server, all we have to do is agree an API.
 
-## Background
 
-The idea for this project emerged as I was rediscovering the state of the art for Web development (early 2015) and from my frustration of not finding everything I needed in a ready-to-use form.
+### SASS Linting
 
-What surprised me at first was that tooling had become so much more complex than it was in the past. I would argue that it is way too complex nowadays and that isn't good for the accessibility of the Web platform. Unfortunately for now, there aren't many alternatives and the benefits of a good build chain are too important to keep aside (who wouldn't want to use all the good stuff ES2015 has brought us?).
+This seemed a very basic omission, I used [gulp-sass-lint](https://www.npmjs.com/package/gulp-sass-lint) NPM package
+to provide the functionality, it is up to the application whether to override the default options or not by providing
+a *sass-lint.yml* file, the structure of which you can learn about at [sass-lint](https://www.npmjs.com/package/sass-lint).
 
-Note that this project is heavily inspired from:
-* Google's [Web Starter Kit](https://github.com/google/web-starter-kit)
-* Countless blog articles about Gulp, TypeScript, ...
-* Many others I'm forgetting :(
+## Features from Modern Web Dev Build
 
-## Features
 * ES2015 and TypeScript support
 * built-in HTTP server with live reloading & cross-device synchronization (BrowserSync)
   * configured to support CORS
@@ -63,9 +66,6 @@ Note that this project is heavily inspired from:
 
 Check out the [change log](CHANGELOG.MD)
 
-## Status & roadmap
-Check out the issues/labels & milestones to get an idea of what's next.
-For existing features, refer to the previous section.
 
 ## Embedded choices
 As state above, some important technology choices are clearly embedded with this project. Here's a rundown of those choices:
@@ -86,21 +86,18 @@ Check out the [upgrade](UPGRADE.md) page
 
 ## Installation
 
-### General prereqs
-Before you install the build (whether manually or through the project generator), you need to install some dependencies globally:
+### General Pre-requisites
+
+Before you install the build, you need to install some dependencies globally:
 * `npm install --global gulp`
 
-### New projects
-The easiest approach to integrate this build is to use our Yeoman Generator available over at https://github.com/dsebastien/modernWebDevGenerator and on npm: https://www.npmjs.com/package/generator-modern-web-dev.
-The generator will set up (almost) everything for you.
-
-### Existing projects
+### Add to Projects
 First configure the required dependencies in your package.json file:
-* add Modern Web Dev Build to your devDependencies: `npm install modern-web-dev-build --save-dev`
+* add Build System to your devDependencies: `npm install node-build-web-app --save-dev`
 * execute `npm install --no-optional`
 
-You should get warnings about missing peer dependencies. Those are dependencies that are required by the build but that you should add to your own project.
-Install these one by one.
+You should get warnings about missing peer dependencies. Those are dependencies that are required by the build but that
+you should add to your own project, install these one by one.
 
 For now the required peer dependencies are as follows:
 * babel-core
@@ -112,10 +109,13 @@ For now the required peer dependencies are as follows:
 Next, check the minimal require file contents below!
 
 ## Required folder structure and files
-The build tries to provide a flexible structure, but given the technical choices that are embedded, some rules must be respected and the build expects certain folders and files to be present. In the future we'll see if we can make this more configurable.
+
+The build tries to provide a flexible structure, but given the technical choices that are embedded, some rules must be
+respected and the build expects certain folders and files to be present. In the future we'll see if we can make this
+more configurable.
 
 ### Mandatory folder structure & files
-Here's an overview of the structure imposed by ModernWebDevBuild.
+Here's an overview of the structure imposed by this Build System.
 Note that if you've generated your project using the Yeoman generator, README files will be there to guide you.
 
 Please make sure to check the file organization section for more background about the organization and usage guidelines.
@@ -153,7 +153,9 @@ Please make sure to check the file organization section for more background abou
   * tslint.json: TypeScript code quality/style rules
 
 ### Minimal (build-related) required file contents
-Although we want to limit this list as much as possible, for everything to build successfully, some files need specific contents:
+
+Although we want to limit this list as much as possible, for everything to build successfully, some files need specific
+contents:
 
 #### .babelrc
 ```
@@ -173,25 +175,27 @@ For that configuration to work, the following devDependencies must also be added
 ```
 
 #### gulpfile.babel.js
-In order to use ModernWebDevBuild, your gulpfile must at least contain the following.
-The code below uses ES2015 (via gulpfile.babel.js), but if you're old school you can also simply use a gulpfile.js with ES5.
-Note that the build tasks provided by ModernWebDevBuild are transpiled to ES5 before being published
+In order to use this Build System, your gulpfile must at least contain the following.
+The code below uses ES2015 (via gulpfile.babel.js), but if you're old school you can also simply use a gulpfile.js with
+ES5.
+
+Note that the build tasks provided are transpiled to ES5 before being published
 
 ```
 "use strict";
 
 import gulp from "gulp";
 
-import modernWebDevBuild from "modern-web-dev-build";
+import build from "node-build-web-app";
 let options = undefined; // no options are supported yet
 
 //options.minifyHTML = false;
 //...
 
-modernWebDevBuild.registerTasks(gulp, options);
+build.registerTasks(gulp, options);
 ```
 
-With the above, all the gulp tasks provided by ModernWebDevBuild will be available to you.
+With the above, all the gulp tasks provided will be available to you.
 
 To configure the build system you can override where the app src exists e.g.
 
@@ -217,14 +221,20 @@ dist/**/*
 #### jspm.conf.js
 The SystemJS/JSPM configuration file plays a very important role;
 * it is where all your actual application dependencies are to be defined
-* it is where you can define your own 'paths', allowing you to load modules of your application easily without having to specify relative paths (i.e., create aliases for paths).
+* it is where you can define your own 'paths', allowing you to load modules of your application easily without having
+  to specify relative paths (i.e., create aliases for paths).
 
-If you choose to use the default JSPM support, then you can add dependencies to your project using `jspm install`; check the [official JSPM documentation](http://jspm.io/) to know more about how to install packages.
+If you choose to use the default JSPM support, then you can add dependencies to your project using `jspm install`;
+check the [official JSPM documentation](http://jspm.io/) to know more about how to install packages.
 
-With the help of this configuration file, SystemJS will be able to load your own application modules and well as third party dependencies.
-In your code, you'll be able to use ES2015 style (e.g., `import {x} from "y"`). In order for this to work, you'll also need to load SystemJS and the SystemJS/JSPM configuration file in your index.html (more on this afterwards).
+With the help of this configuration file, SystemJS will be able to load your own application modules and well as third
+party dependencies. In your code, you'll be able to use ES2015 style (e.g., `import {x} from "y"`). In order for this
+to work, you'll also need to load SystemJS and the SystemJS/JSPM configuration file in your index.html (more on this
+afterwards).
 
-If you have disabled the use of JSPM by the build then you can rename that file if you wish and inform the build (see the options), BUT make sure that any reference in the various configuration files is updated (e.g., karma configuration, jshint configuration, etc). Only rename it if it is really really useful to you :)
+If you have disabled the use of JSPM by the build then you can rename that file if you wish and inform the build (see
+the options), BUT make sure that any reference in the various configuration files is updated (e.g., karma configuration,
+jshint configuration, etc). Only rename it if it is really really useful to you :)
 
 Here's an example:
 ```
@@ -244,11 +254,13 @@ In the above:
 * defaultJSExtensions: is mandatory so that extensions don't have to be specified when importing modules
 * transpiler: is set to false because we don't use in-browser transpilation
 * paths
-  * core/*, pages/* allow you to import modules from different parts of your codebase without having to specify relative or absolute paths. This is covered in the folder structure section above.
+  * core/*, pages/* allow you to import modules from different parts of your codebase without having to specify
+   relative or absolute paths. This is covered in the folder structure section above.
   * you can rename those if you wish
 
 #### package.json
-In addition to the dependencies listed previously, you also need to have the following in your package.json file, assuming that you want to use JSPM:
+In addition to the dependencies listed previously, you also need to have the following in your package.json file,
+assuming that you want to use JSPM:
 
 ```
   "jspm": {
@@ -261,18 +273,23 @@ In addition to the dependencies listed previously, you also need to have the fol
   }
 ```
 
-This is where you let JSPM know where to save the information about dependencies you install. This is also where you can easily add new dependencies; for example: `"angular2": "npm:angular2@^2.0.0-beta.1",`.
-Once a dependency is added there, you can invoke `jspm install` to get the files and transitive dependencies installed and get an updated jspm.conf.js file.
+This is where you let JSPM know where to save the information about dependencies you install. This is also where you
+can easily add new dependencies; for example: `"angular2": "npm:angular2@^2.0.0-beta.1",`. Once a dependency is added
+there, you can invoke `jspm install` to get the files and transitive dependencies installed and get an updated
+jspm.conf.js file.
 
 #### tsconfig.json
-Given that TypeScript is one of the (currently) embedded choices of this project, the TypeScript configuration file is mandatory.
+Given that TypeScript is one of the (currently) embedded choices of this project, the TypeScript configuration file is
+mandatory.
 
 The tsconfig.json file contains:
 * the configuration of the TypeScript compiler
 * TypeScript code style rules
 * the list of files/folders to include/exclude
 
-Here's is the minimal required contents for ModernWebDevBuild. Note that the outDir value is important as it tells the compiler where to write the generated code! Make sure that you also DO have the rootDir property defined and pointing to "./app", otherwise the build will fail (more precisely, `npm run serve` will fail).
+Here's is the minimal required contents. Note that the outDir value is important as it tells the compiler where to
+write the generated code! Make sure that you also DO have the rootDir property defined and pointing to "./app",
+otherwise the build will fail (more precisely, `npm run serve` will fail).
 
 The build depends on the presence of those settings.
 
@@ -352,12 +369,15 @@ Here's a more complete example including code style rules:
 }
 ```
 
-Note the exclusion that we have made, all of which are relevant and there to avoid known issues (e.g., https://github.com/typings/discussions/issues/6 if you are using typings).
+Note the exclusion that we have made, all of which are relevant and there to avoid known issues (e.g.,
+https://github.com/typings/discussions/issues/6 if you are using typings).
 
 #### tslint.json
 tslint.json is the configuration file for [TSLint](https://github.com/palantir/tslint).
 
-Although it is not strictly mandatory (the build will work without this file), we heavily recommend you to use it as it is very useful to ensure a minimal code quality level and can help you avoid common mistakes and unnecessary complicated code:
+Although it is not strictly mandatory (the build will work without this file), we heavily recommend you to use it as it
+is very useful to ensure a minimal code quality level and can help you avoid common mistakes and unnecessary complicated
+code:
 
 Here's an example:
 ```
@@ -419,10 +439,12 @@ Here's an example:
 ```
 
 #### karma.conf.js
-Karma loads his configuration from karma.conf.js. That file contains everything that Karma needs to know to execute your unit tests.
+Karma loads his configuration from karma.conf.js. That file contains everything that Karma needs to know to execute
+your unit tests.
 
-Here's an example configuration file that uses Jasmine. Note that the main Karma dependencies including PhantomJS are included in the build.
-You only need to add a dependency to jasmine, karma-jasmine and karma-jspm for the following to work.
+Here's an example configuration file that uses Jasmine. Note that the main Karma dependencies including PhantomJS are
+included in the build. You only need to add a dependency to jasmine, karma-jasmine and karma-jspm for the following to
+work.
 
 If you choose not to use JSPM, then you can use karma-systemjs instead: https://www.npmjs.com/package/karma-systemjs
 
@@ -548,7 +570,8 @@ Dev dependencies to add for the above Karma configuration:
 ```
 
 ### Minimal (application-specific) required file contents
-Although we want to limit this list as much as possible, for everything to build successfully, some files need specific contents:
+Although we want to limit this list as much as possible, for everything to build successfully, some files need specific
+contents:
 
 #### core/app.ts
 This should be the top element of your application. This should be loaded by core/boot.ts (see below).
@@ -565,7 +588,8 @@ export class App {
 ```
 
 #### core/boot.ts
-The boot.ts file is the entrypoint of your application. Currently, it is mandatory for this file to exist (with that specific name), although that could change or be customizable later.
+The boot.ts file is the entrypoint of your application. Currently, it is mandatory for this file to exist (with that
+specific name), although that could change or be customizable later.
 
 The contents are actually not important but here's a starting point:
 
@@ -628,7 +652,8 @@ As you can see above, a third-party stylesheet is imported.
 
 
 ### index.html
-The index.html file is the entrypoint of your application. It is not mandatory per se for ModernWebDevBuild, but when you run `npm run serve`, it'll be opened. Also, the `html` build task will try and replace/inject content in it.
+The index.html file is the entrypoint of your application. It is not mandatory per se, but when you run `npm run serve`,
+it'll be opened. Also, the `html` build task will try and replace/inject content in it.
 
 Here's the minimal required contents for index.html (required for production builds with minification and bundling):
 
@@ -665,10 +690,11 @@ In the above, the most important parts are:
 * for production, the contents of `<!-- build:css-bundle --> ... <!-- endbuild -->` will be replaced by the application's CSS bundle created by the build
 * for production, the contents of `<!-- build:js-app --> ... <!-- endbuild -->` will be replaced by the application's JS bundle created by the build
 
-Also, note that during development, SystemJS is loaded (system.src.js), the JSPM configuration is loaded (jspm.conf.js) and SystemJS is used to load the entrypoint of the application (core/core.bootstrap).
+Also, note that during development, SystemJS is loaded (system.src.js), the JSPM configuration is loaded (jspm.conf.js)
+and SystemJS is used to load the entrypoint of the application (core/core.bootstrap).
 
 ## Commands
-Once you have added ModernWebDevBuild to your project, you can list all the available commands using `gulp help`.
+Once you have added this build system to your project, you can list all the available commands using `gulp help`.
 The command will give you a description of each task. The most important to start discovering are:
 * `gulp serve`: start a Web server with live reload, watching files, transpiling, generating sourcemaps, etc
 * `gulp serve-dist`: same with the production version
@@ -682,10 +708,26 @@ The command will give you a description of each task. The most important to star
 You can run the `gulp -T` command get an visual idea of the links between the different tasks.
 
 ## Scripts
-To make your life easier, you can add the following scripts to your package.json file. Note that if you have used the generator to create your project, you normally have these already:
+To make your life easier, you can add the following scripts to your package.json file. Note that if you have used the
+generator to create your project, you normally have these already:
 
 ```
-
+  "scripts": {
+    "tsc": "tsc",
+    "typings": "typings",
+    "clean": "gulp clean",
+    "compile": "gulp",
+    "build": "npm run compile && npm run test",
+    "test": "gulp prepare-test-unit && gulp test-unit",
+    "start": "npm run serve",
+    "serve": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve",
+    "serve-dist": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve-dist",
+    "update": "npm install --no-optional && jspm update && jspm dl-loader && npm run typings-install",
+    "outdated": "npm outdated",
+    "help": "gulp help",
+    "typings-install": "typings install",
+    "setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run typings-install"
+  }
 ```
 
 ## Options
@@ -697,7 +739,7 @@ Defining options is done as in the following example gulpfile.babel.js:
 
 import gulp from "gulp";
 
-import modernWebDevBuild from "modern-web-dev-build";
+import build from "node-build-web-app";
 
 let options = {};
 
@@ -706,7 +748,8 @@ options.distEntryPoint = "core/core.bootstrap";
 
 Available options:
 * distEntryPoint
-  * must be a relative path from .tmp/ to the file to use as entry point for creating the production JS bundle. The extension does not need to be specified (SystemJS is used to load the file)
+  * must be a relative path from .tmp/ to the file to use as entry point for creating the production JS bundle. The
+   extension does not need to be specified (SystemJS is used to load the file)
   * by default, the following file is used: `core/boot.js`
 * minifyProductionJSBundle (default: true)
   * by default, the production JS bundle is minified
@@ -731,7 +774,8 @@ Available options:
 ## FAQ
 
 ### How can I inline some script in the production version of some HTML page?
-* add `inline <path to the JS file>` right above the script tag that you want to have inlined; this tells the gulp-inline-source plugin where to find the resource that should be inlined
+* add `inline <path to the JS file>` right above the script tag that you want to have inlined; this tells the
+  gulp-inline-source plugin where to find the resource that should be inlined
 * add the `inline` attribute to the script tag itself: ```<script inline src="..."></script>```
 
 Example:
@@ -786,6 +830,7 @@ Check out [gulp-inline-source](https://www.npmjs.com/package/gulp-inline-source)
 * gulp-babel: ES2015 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
 * gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs
 * gulp-jscs-stylish: Stylish reporter for gulp-jscs: https://www.npmjs.com/package/gulp-jscs-stylish
+* gulp-sass-lint: Lint SASS files: https://www.npmjs.com/package/gulp-sass-lint
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
@@ -793,6 +838,7 @@ Check out [gulp-inline-source](https://www.npmjs.com/package/gulp-inline-source)
 * event-stream: construct pipes of streams of events: https://www.npmjs.com/package/event-stream
 * connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback
 * karma: unit test runner: https://www.npmjs.com/package/karma
+* http-proxy-middleware: Middleware to send requests to proxy API server: https://www.npmjs.com/package/http-proxy-middleware
 
 ## Contributing
 * Fork the project
@@ -818,7 +864,7 @@ The project includes multiple configuration files. Here's some information about
 * package.json: NPM's configuration file. This is where all dependencies are defined (more information: https://docs.npmjs.com/files/package.json)
 * npm-shrinkwrap.json: file created using npm shrinkwrap. Blocks dependency versions (including transitive ones), needed for build stability
 
-## Releasing a version
+## Release Process
 * commit all changes to include in the release
 * edit the version in package.json
   * respect semver
@@ -830,10 +876,8 @@ The project includes multiple configuration files. Here's some information about
 * npm publish
 
 ## Authors
-### Sebastien Dubois
-* [@Blog](https://www.dsebastien.net)
-* [@Twitter](https://twitter.com/dSebastien)
-* [@GitHub](https://github.com/dSebastien)
+### Mark Small
+* [@GitHub](https://github.com/marksmall)
 
 ## License
 This project and all associated source code is licensed under the terms of the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
