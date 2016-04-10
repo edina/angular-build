@@ -54,9 +54,6 @@ options.mangleProductionJSBundle = false; // Mangled JS bundles are currently no
  */
 //options.systemjsConfigurationFile = "my-systemjs.config.js";
 
-options.folders = {};
-options.folders.app = './src/main/app';
-
 /*
   Set API proxy, this is the URL to listen for calls on, if one received, forward it on to the
   target URL.
@@ -70,7 +67,7 @@ options.proxy = {
 // Register all node-build-web-app build tasks.
 build.registerTasks(gulp, options);
 
-// Project specific tasks and Proxy Server.
+// Require all tasks/modules in ./gulp, including sub folders
 exports.options = options;
-requireDir('./gulp', { recurse: true });
+requireDir('./gulp/tasks', { recurse: true });
 
