@@ -1,7 +1,7 @@
 {
   "name": "node-build-web-app",
   "description": "Development Build based on ModernWebDevBuild.",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "author": {
     "name": "Mark Small",
     "email": "marksmall@gmx.com"
