@@ -13,6 +13,6 @@ node_js:
   - '4.4.2'
 before_script:
   - npm prune
-  - npm install -g npm
 before_install:
+  - npm install -g npm
   - npm run setup
