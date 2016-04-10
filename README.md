@@ -19,8 +19,8 @@ added features I tend to use.
 
 ### Proxy API Server
 
-This was the primary feature I felt was missing, maybe I missed something and this isn't necessary but it is how I am
-familiar developing, so I forked the repository. The proxy server provides stubbed API calls to the back-end server.
+This was the primary feature I felt was missing, maybe I missed something and this isn't necessary but it is how I
+develop, so I forked the repository. The proxy server provides stubbed API calls to the back-end server.
 The proxy middleware is provided by [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware)
 and is configured and developed by the application project, not this package. I tend to use [express](https://www.npmjs.com/package/express), but that isn't crucial. To setup
 the proxy, add configuration to the **options** object in the project **gulpfile** e.g.
@@ -38,6 +38,16 @@ to forward requests to. So, requests to `http://localhost:8000/api/login` would 
 response from it returned to the application. This enables us to develop the front-end separately from the back-end
 server, all we have to do is agree an API.
 
+
+### Configure App Source Folder
+
+Added ability to configure where the application code exists, this was previously hard-coded to the project root but
+that seemed limiting. To override the location add to the gulpfile e.g.
+
+```
+options.folders = {};
+options.folders.app = './src/main/app';
+```
 
 ### SASS Linting
 
@@ -117,12 +127,11 @@ more configurable.
 
 ### Mandatory folder structure & files
 Here's an overview of the structure imposed by this Build System.
-Note that if you've generated your project using the Yeoman generator, README files will be there to guide you.
 
 Please make sure to check the file organization section for more background about the organization and usage guidelines.
 
 * project root
-  * app: folder containing all the files of the application
+  * app: folder containing all the files of the application, defaults root, but is configurable, see above.
 	* components: folder containing components of your application (e.g., login, menu, ...); basically reusable pieces
 	* core: folder containing at least the entrypoint of your application
 	  * commons: folder containing common reusable code (e.g., base utilities)
@@ -196,14 +205,7 @@ let options = undefined; // no options are supported yet
 build.registerTasks(gulp, options);
 ```
 
-With the above, all the gulp tasks provided will be available to you.
-
-To configure the build system you can override where the app src exists e.g.
-
-```
-options.folder = {};
-options.folders.app = '/path/to/src';
-```
+With the above, all the gulp tasks provided will be available to you. See a [full example](examples/gulpfile.babel.js)
 
 #### .jscsrc
 Valid configuration
