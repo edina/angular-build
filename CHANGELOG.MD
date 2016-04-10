@@ -1,3 +1,8 @@
+* 0.6.6
+  * Upgraded to latest dependencies.
+  * Updated [readme](README.MD).
+* 0.6.5
+  * Added SASS linting via gulp-sass-lint.
 * 0.5.0
   * upgraded dependencies to support TypeScript 1.8.x
 * 0.4.1
