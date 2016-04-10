@@ -38,6 +38,9 @@ to forward requests to. So, requests to `http://localhost:8000/api/login` would 
 response from it returned to the application. This enables us to develop the front-end separately from the back-end
 server, all we have to do is agree an API.
 
+The proxy server itself is defined by the project using this Build System but if the above configuration exists, then
+the proxy task must also be implemented, see an example of of such a [task](examples/tasks/proxy.js)
+
 
 ### Configure App Source Folder
 

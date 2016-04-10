@@ -114,14 +114,12 @@ class ServeTaskLoader extends AbstractTaskLoader {
         let images = null;
 
         if(gulp.options.folders){
-            console.log("FOLDER INCLUDED");
             html = [ gulp.options.folders.app + config.globs.html ];
             styles = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
             typescript = [ gulp.options.folders.app + config.globs.scripts.typescript ];
             javascript = [ gulp.options.folders.app + config.globs.scripts.javascript ];
             images = [ gulp.options.folders.app + config.globs.images ];
         } else{
-            console.log("FOLDER NOT INCLUDED");
             html = config.html.src;
             styles = config.styles.src;
             typescript = config.typescript.srcAppOnly;
@@ -144,18 +142,37 @@ class ServeTaskLoader extends AbstractTaskLoader {
         });
 
         gulp.task("prepare-serve", "Do all the necessary preparatory work for the serve task", () =>{
-            return runSequence([
-                "clean",
-                "ts-lint",
-                "check-js-style",
-                "check-js-quality"
-            ], [
-                "scripts-typescript",
-                "scripts-javascript",
-                "sass-lint",
-                "styles",
-                "validate-package-json"
-            ]);
+            // Only run the proxy task if there is configuration for it, the proxy task is mandatory if
+            // the proxy configuration is present.
+            if(gulp.options.proxy){
+                return runSequence([
+                    "clean",
+                    "ts-lint",
+                    "check-js-style",
+                    "check-js-quality",
+                    "proxy"
+                ], [
+                    "scripts-typescript",
+                    "scripts-javascript",
+                    "sass-lint",
+                    "styles",
+                    "validate-package-json"
+                ]);
+            } else{
+                return runSequence([
+                    "clean",
+                    "ts-lint",
+                    "check-js-style",
+                    "check-js-quality"
+                ], [
+                    "scripts-typescript",
+                    "scripts-javascript",
+                    "sass-lint",
+                    "styles",
+                    "validate-package-json"
+                ]);
+            }
+
         });
     }
 }
