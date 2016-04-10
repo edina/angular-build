@@ -172,7 +172,6 @@ class ServeTaskLoader extends AbstractTaskLoader {
                     "validate-package-json"
                 ]);
             }
-
         });
     }
 }
