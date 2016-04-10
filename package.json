@@ -90,21 +90,20 @@
     "karma-phantomjs-launcher": "1.0.x",
     "karma-spec-reporter": "0.0.x",
     "karma-systemjs": "0.13.x",
+    "nodemon": "1.9.x",
     "node-sass": "3.4.x",
     "opn": "4.0.x",
-    "phantomjs": "2.1.x",
     "phantomjs-polyfill": "0.0.x",
     "phantomjs-prebuilt": "^2.1.7",
     "require-dir": "0.3.x",
     "run-sequence": "1.1.x",
     "systemjs-builder": "0.15.x",
-    "tslint": "3.7.x"
+    "tslint": "3.7.x",
+    "typescript": "1.8.x"
   },
   "peerDependencies": {
     "babel-core": "6.7.x",
-    "gulp": "3.9.x",
-    "nodemon": "1.9.x",
-    "typescript": "1.8.x"
+    "gulp": "3.9.x"
   },
   "engines": {
     "node": ">=4.2.6",
