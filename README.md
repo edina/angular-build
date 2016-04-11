@@ -10,9 +10,10 @@
 
 
 ## About
-A build system for Angular 2 web app development using the Gulp build system. This module forked from
+A Build System for Angular 2 web app development using the Gulp build system. This module forked from
 [Modern Web Dev Build](https://www.npmjs.com/package/modern-web-dev-build). All kudos goes to Sebastien, I have just
-added features I tend to use.
+added features I tend to use. You can see a [seed](https://github.com/marksmall/angular2-jspm-seed) project using this
+Build System.
 
 
 ## Added Features
