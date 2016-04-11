@@ -2,7 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-//import utils from "../utils";
+import utils from "../utils";
 
 import sass from "gulp-sass";
 import cssimport from "gulp-cssimport";
@@ -16,8 +16,19 @@ class StylesDistTaskLoader extends AbstractTaskLoader {
         super.registerTask(gulp);
 
         gulp.task("styles-dist", "Optimize and minimize stylesheets for production", () =>{
+            // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+            let src = null;
+
+            if(gulp.options.folders){
+                src = [ gulp.options.folders.app + config.globs.styles.css,
+                        gulp.options.folders.app + config.globs.styles.sass,
+                        utils.exclude(gulp.options.folders.app + config.globs.styles.vendor) ];
+            } else{
+                src = config.styles.srcWithoutVendor;
+            }
+
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
-                config.styles.srcWithoutVendor
+                src
                 )
 
                 // Display the files in the stream

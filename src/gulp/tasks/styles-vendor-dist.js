@@ -10,24 +10,34 @@ import concat from "gulp-concat";
 import csso from "gulp-csso";
 import minifyCss from "gulp-minify-css";
 import size from "gulp-size";
-//import debug from "gulp-debug";
+import debug from "gulp-debug";
 
 class StylesVendorDistTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
         super.registerTask(gulp);
 
         gulp.task("styles-vendor-dist", "Optimize and minimize vendor stylesheets for production", () =>{
+            // If the app src folder is overridden, then append it to the watch list, otherwise use default.
+            let src = null;
+
+            if(gulp.options.folders){
+                console.log("VENDER FILE: " + gulp.options.folders.app + "/" + config.globs.styles.vendor);
+                src = [ gulp.options.folders.app + "/" + config.globs.styles.vendor ];
+            } else{
+                src = config.styles.srcVendorOnly;
+            }
+
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)([
-                config.styles.srcVendorOnly
+                src
                 )
 
                 // Display the files in the stream
-                //.pipe(debug({title: "Stream contents:", minimal: true}))
+                .pipe(debug({title: "Stream contents:", minimal: true}))
 
                 // Process Sass files
                 .pipe(sass({
-                    style: "compressed"
-                    //errLogToConsole: true
+                    style: "compressed",
+                    errLogToConsole: true
                 }))
 
                 // Replace CSS imports by actual contents
