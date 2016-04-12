@@ -10,7 +10,7 @@ import concat from "gulp-concat";
 import csso from "gulp-csso";
 import minifyCss from "gulp-minify-css";
 import size from "gulp-size";
-import debug from "gulp-debug";
+// import debug from "gulp-debug";
 
 class StylesVendorDistTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
@@ -32,7 +32,7 @@ class StylesVendorDistTaskLoader extends AbstractTaskLoader {
                 )
 
                 // Display the files in the stream
-                .pipe(debug({title: "Stream contents:", minimal: true}))
+                // .pipe(debug({title: "Stream contents:", minimal: true}))
 
                 // Process Sass files
                 .pipe(sass({
