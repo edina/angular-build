@@ -16,3 +16,6 @@ before_script:
 before_install:
   - npm install -g npm
   - npm run setup
+addons:
+  code_climate:
+    repo_token: a126c683677100e8da151ac7d08f50980993b862f0ab975a2668b3f2c57209d8
