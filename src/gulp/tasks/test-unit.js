@@ -5,16 +5,16 @@ import AbstractTaskLoader from "../abstractTaskLoader";
 import utils from "../utils";
 
 //import debug from "gulp-debug";
-// let KarmaServer = require("karma").Server; // TODO replace by import {Server as KarmaServer} from "karma";
-let path = require("path");
+// let path = require("path");
+import path from "path";
+import runSequence from "run-sequence";
+// let runSequence = require("run-sequence");
 
 class TestUnitTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
         super.registerTask(gulp);
 
-        let runSequence = require("run-sequence");
-
-        runSequence = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
+        let run = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
 
         let karmaConfigFilePath = path.resolve("karma.conf.js");
 
@@ -33,7 +33,7 @@ class TestUnitTaskLoader extends AbstractTaskLoader {
         });
 
         gulp.task("prepare-test-unit", "Do all the necessary preparatory work for the test-unit task", () =>{
-            return runSequence([
+            return run([
                 "clean",
                 "ts-lint",
                 "check-js-style",

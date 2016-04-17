@@ -117,7 +117,7 @@ rules:
 
   # Node.js and CommonJS
   callback-return: 2
-  global-require: 2
+  global-require: 1
   handle-callback-err: 2
   no-mixed-requires: 0
   no-new-require: 0
@@ -149,7 +149,7 @@ rules:
   max-len: 0
   max-nested-callbacks: 0
   max-params: 0
-  max-statements: [2, 30]
+  max-statements: [2, 40]
   new-cap: 0
   new-parens: 0
   newline-after-var: 0

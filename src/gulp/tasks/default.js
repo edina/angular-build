@@ -3,12 +3,11 @@
 import AbstractTaskLoader from "../abstractTaskLoader";
 //import config from "../config";
 //import utils from "../utils";
+let runSequence = require("run-sequence");
 
 class DefaultTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
         super.registerTask(gulp);
-
-        let runSequence = require("run-sequence");
 
         runSequence = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
 

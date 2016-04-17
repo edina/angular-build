@@ -3,8 +3,9 @@
 import notify from "gulp-notify";
 import gutil from "gulp-util";
 import plumber from "gulp-plumber";
+import karma from "karma";
 
-let KarmaServer = require("karma").Server; // TODO replace by import {Server as KarmaServer} from "karma";
+let KarmaServer = karma.Server;
 
 /**
  * Whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
@@ -52,7 +53,7 @@ let reportError = (error) =>{
     console.error(report);
 
     if(exitOnError){
-        process.exit(1);
+        throw new Error("Error: ", error);
     } else{
         // Prevent the 'watch' task from stopping
         this.emit("end");

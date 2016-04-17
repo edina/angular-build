@@ -8,13 +8,14 @@ const browserSync = require("browser-sync").create(config.webServerNames.dist);
 
 import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 
+// let runSequence = require("run-sequence");
+import runSequence from "run-sequence";
+
 class ServeDistTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
         super.registerTask(gulp);
 
-        let runSequence = require("run-sequence");
-
-        runSequence = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
+        let run = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
 
         const startBrowserSync = () =>{
             browserSync.init({
@@ -22,7 +23,7 @@ class ServeDistTaskLoader extends AbstractTaskLoader {
                 //port: 8000,
 
                 // Customize the BrowserSync console logging prefix
-                logPrefix: "MWD", // Modern Web Dev
+                logPrefix: "NBWA",
 
                 // Run w/ https by uncommenting "https: true"
                 // Note: this uses an unsigned certificate which on first access
@@ -48,7 +49,7 @@ class ServeDistTaskLoader extends AbstractTaskLoader {
         };
 
         gulp.task("serve-dist", "Build and serve the production version (i.e., 'dist' folder contents", () =>{
-            return runSequence([ "default" ], startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
+            return run([ "default" ], startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
         });
     }
 }

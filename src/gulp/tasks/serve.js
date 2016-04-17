@@ -6,6 +6,7 @@ import utils from "../utils";
 
 let browserSync = require("browser-sync").create(config.webServerNames.dev);
 let proxyMiddleware = require("http-proxy-middleware");
+let runSequence = require("run-sequence");
 
 import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 //import debug from "gulp-debug";
@@ -13,8 +14,6 @@ import historyApiFallback from "connect-history-api-fallback"; // fix for SPAs w
 class ServeTaskLoader extends AbstractTaskLoader {
     registerTask(gulp){
         super.registerTask(gulp);
-
-        let runSequence = require("run-sequence");
 
         runSequence = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
 
@@ -108,20 +107,18 @@ class ServeTaskLoader extends AbstractTaskLoader {
 
         // If the app src folder is overridden, then append it to the watch list, otherwise use default.
         let html = null;
-        let styles = null;
+        let styles = utils.getCssFolder(gulp, config);
         let typescript = null;
         let javascript = null;
         let images = null;
 
         if(gulp.options.folders){
             html = [ gulp.options.folders.app + config.globs.html ];
-            styles = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
             typescript = [ gulp.options.folders.app + config.globs.scripts.typescript ];
             javascript = [ gulp.options.folders.app + config.globs.scripts.javascript ];
             images = [ gulp.options.folders.app + config.globs.images ];
         } else{
             html = config.html.src;
-            styles = config.styles.src;
             typescript = config.typescript.srcAppOnly;
             javascript = config.javascript.src;
             images = config.images.src;
