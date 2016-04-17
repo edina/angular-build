@@ -83,6 +83,7 @@ class ScriptsJavaScriptDistTaskLoader extends AbstractTaskLoader {
             // default: using JSPM
             if(useJSPM === true){
                 // Reference: https://github.com/systemjs/builder/issues/203
+                // eslint disable-line global-require
                 let jspm = require("jspm");
 
                 jspm.setPackagePath(".");
@@ -93,6 +94,7 @@ class ScriptsJavaScriptDistTaskLoader extends AbstractTaskLoader {
                     bundleConfiguration
                 );
             } else{
+                // eslint disable-line global-require
                 let Builder = require("systemjs-builder");
                 let systemjsBuilder = new Builder(".", systemjsConfigurationFile);
 
