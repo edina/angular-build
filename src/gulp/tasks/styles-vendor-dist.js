@@ -21,7 +21,6 @@ class StylesVendorDistTaskLoader extends AbstractTaskLoader {
             let src = null;
 
             if(gulp.options.folders){
-                console.log("VENDER FILE: " + gulp.options.folders.app + "/" + config.globs.styles.vendor);
                 src = [ gulp.options.folders.app + "/" + config.globs.styles.vendor ];
             } else{
                 src = config.styles.srcVendorOnly;
