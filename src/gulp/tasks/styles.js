@@ -2,7 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-//import utils from "../utils";
+import utils from "../utils";
 
 import sass from "gulp-sass";
 import sourcemaps from "gulp-sourcemaps";
@@ -19,13 +19,7 @@ class StylesTaskLoader extends AbstractTaskLoader {
 
         gulp.task("styles", "Compile, add vendor prefixes and generate sourcemaps", () =>{
             // If the app src folder is overridden, then append it to the watch list, otherwise use default.
-            let src = null;
-
-            if(gulp.options.folders){
-                src = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
-            } else{
-                src = config.styles.src;
-            }
+            let src = utils.getCssFolder(gulp, config);
 
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
                 src

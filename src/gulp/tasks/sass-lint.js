@@ -2,7 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-//import utils from "../utils";
+import utils from "../utils";
 
 import sassLint from "gulp-sass-lint";
 import size from "gulp-size";
@@ -15,13 +15,7 @@ class SassLintTaskLoader extends AbstractTaskLoader {
         super.registerTask(gulp);
 
         gulp.task("sass-lint", "Lint SASS Styles", () =>{
-            let src = null;
-
-            if(gulp.options.folders){
-                src = [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
-            } else{
-                src = config.styles.src;
-            }
+            let src = utils.getCssFolder(gulp, config);
 
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
                 src // only the application's code needs to be checked

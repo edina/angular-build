@@ -2,7 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-//import utils from "../utils";
+import utils from "../utils";
 
 import jscs from "gulp-jscs";
 import jscsStylish from "gulp-jscs-stylish";
@@ -15,13 +15,7 @@ class CheckJsStyleTaskLoader extends AbstractTaskLoader {
 
         gulp.task("check-js-style", "Enforce JavaScript code style", () =>{
             // If the app src folder is overridden, then append it to the watch list, otherwise use default.
-            let src = null;
-
-            if(gulp.options.folders){
-                src = [ gulp.options.folders.app + config.globs.scripts.javascript ];
-            } else{
-                src = config.javascript.src;
-            }
+            let src = utils.getJavaScriptFolder(gulp, config);
 
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
                 src

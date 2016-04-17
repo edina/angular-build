@@ -2,7 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-//import utils from "../utils";
+import utils from "../utils";
 
 import changed from "gulp-changed";
 import sourcemaps from "gulp-sourcemaps";
@@ -16,13 +16,7 @@ class ScriptsJavaScriptTaskLoader extends AbstractTaskLoader {
 
         gulp.task("scripts-javascript", "Transpile JavaScript (ES2015 to ES5 using Babel) and generate sourcemaps", () =>{
             // If the app src folder is overridden, then append it to the watch list, otherwise use default.
-            let src = null;
-
-            if(gulp.options.folders){
-                src = [ gulp.options.folders.app + config.globs.scripts.javascript ];
-            } else{
-                src = config.javascript.src;
-            }
+            let src = utils.getJavaScriptFolder(gulp, config);
 
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
                 src

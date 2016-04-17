@@ -4,6 +4,8 @@ import notify from "gulp-notify";
 import gutil from "gulp-util";
 import plumber from "gulp-plumber";
 
+let KarmaServer = require("karma").Server; // TODO replace by import {Server as KarmaServer} from "karma";
+
 /**
  * Whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
  * @type {boolean}
@@ -171,6 +173,37 @@ let mergeOptions = (obj1 = {}, obj2 = {}) =>{
     return retVal;
 };
 
+let getJavaScriptFolder = (gulp, config) =>{
+    if(gulp.options.folders){
+        return [ gulp.options.folders.app + config.globs.scripts.javascript ];
+    } else{
+        return config.javascript.src;
+    }
+};
+
+let getTypeScriptFolder = (gulp, config) =>{
+    if(gulp.options.folders){
+        return [ gulp.options.folders.app + config.globs.scripts.javascript ];
+    } else{
+        return config.javascript.src;
+    }
+};
+
+let getCssFolder = (gulp, config) =>{
+    if(gulp.options.folders){
+        return [ gulp.options.folders.app + config.globs.styles.css, gulp.options.folders.app + config.globs.styles.sass ];
+    } else{
+        return config.styles.src;
+    }
+};
+
+let getKarmaServer = (config, callback) =>{
+    return new KarmaServer({
+        configFile: config.path, // necessary otherwise the file is not resolved correctly by the karma runtime
+        singleRun: config.singleRun
+    }, callback).start();
+};
+
 export default {
     exclude,
     reportError,
@@ -178,5 +211,9 @@ export default {
     validateArgument,
     validateGulpObjectIsConfigured,
     configureGulpObject,
-    mergeOptions
+    mergeOptions,
+    getJavaScriptFolder,
+    getTypeScriptFolder,
+    getCssFolder,
+    getKarmaServer
 };
