@@ -1,6 +1,6 @@
 # Web Dev Build System
 
-[![NPM version](https://img.shields.io/badge/npm-3.8.1-blue.svg)](https://www.npmjs.com/package/node-build-web-app)
+[![NPM version](https://img.shields.io/badge/npm-3.8.6-blue.svg)](https://www.npmjs.com/package/node-build-web-app)
 [![Downloads](https://img.shields.io/npm/dm/node-build-web-app.svg)](https://www.npmjs.com/package/node-build-web-app)
 [![GitHub issues](https://img.shields.io/github/issues/marksmall/node-build-web-app.svg)](https://github.com/marksmall/node-build-web-app/issues)
 [![Build Status](https://travis-ci.org/marksmall/node-build-web-app.svg?branch=master)](https://travis-ci.org/marksmall/node-build-web-app)
