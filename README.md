@@ -6,6 +6,9 @@
 [![Build Status](https://travis-ci.org/marksmall/node-build-web-app.svg?branch=master)](https://travis-ci.org/marksmall/node-build-web-app)
 [![Dependency Status](https://david-dm.org/marksmall/node-build-web-app.svg)](https://david-dm.org/marksmall/node-build-web-app)
 [![devDependency Status](https://david-dm.org/marksmall/node-build-web-app/dev-status.svg)](https://david-dm.org/marksmall/node-build-web-app#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/marksmall/node-build-web-app/badges/gpa.svg)](https://codeclimate.com/github/marksmall/node-build-web-app)
+[![Test Coverage](https://codeclimate.com/github/marksmall/node-build-web-app/badges/coverage.svg)](https://codeclimate.com/github/marksmall/node-build-web-app/coverage)
+[![Issue Count](https://codeclimate.com/github/marksmall/node-build-web-app/badges/issue_count.svg)](https://codeclimate.com/github/marksmall/node-build-web-app)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/marksmall/node-build-web-app/master/LICENSE.MD)
 
 
