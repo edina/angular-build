@@ -9,6 +9,7 @@
 [![Code Climate](https://codeclimate.com/github/marksmall/node-build-web-app/badges/gpa.svg)](https://codeclimate.com/github/marksmall/node-build-web-app)
 [![Test Coverage](https://codeclimate.com/github/marksmall/node-build-web-app/badges/coverage.svg)](https://codeclimate.com/github/marksmall/node-build-web-app/coverage)
 [![Issue Count](https://codeclimate.com/github/marksmall/node-build-web-app/badges/issue_count.svg)](https://codeclimate.com/github/marksmall/node-build-web-app)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg?style=flat)](https://gitter.im/marksmall/node-build-web-app)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/marksmall/node-build-web-app/master/LICENSE.MD)
 
 
