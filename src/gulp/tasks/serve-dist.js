@@ -65,10 +65,12 @@ class ServeDistTaskLoader extends AbstractTaskLoader {
         };
 
         gulp.task("serve-dist", "Build and serve the production version (i.e., 'dist' folder contents", () =>{
-            let tasks = ["default"];
+            let tasks = [ "default" ];
+
             if(gulp.options.proxy){
-              tasks.unshift("proxy");
+                tasks.unshift("proxy");
             }
+
             return run(tasks, startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
         });
     }
