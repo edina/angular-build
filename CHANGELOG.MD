@@ -1,3 +1,11 @@
+* 0.6.9
+  * Add **Proxy API** Stubbed server to *serve-dist* tag.
+* 0.6.8
+  * Fixed linting bug
+* 0.6.7
+  * Upgrade Node version
+  * Update travis-ci to use correct Node version.
+  * Change how **Proxy API** server is started.
 * 0.6.6
   * Upgraded to latest dependencies.
   * Updated [readme](README.MD).
