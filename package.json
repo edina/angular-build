@@ -1,19 +1,28 @@
 {
-  "name": "node-build-web-app",
-  "description": "Development Build based on ModernWebDevBuild.",
+  "name": "angular-build",
+  "description": "Build Angular 2/JSPM with Gulp. Forked from ModernWebDevBuild.",
   "version": "0.6.9",
   "author": {
     "name": "Mark Small",
-    "email": "marksmall@gmx.com"
+    "email": "m.small@ed.ac.uk"
   },
-  "contributors": [],
-  "homepage": "https://github.com/marksmall/node-build-web-app",
+  "contributors": [{
+    "name": "Andrew Seales",
+    "email": "andrew.seales@ed.ac.uk"
+  }, {
+    "name": "John Pinto",
+    "email": "john.pinto@ed.ac.uk"
+  }, {
+    "name": "Robert Villa",
+    "email": "robert.villa@ed.ac.uk"
+  }],
+  "homepage": "https://github.com/edina/angular-build",
   "private": false,
   "license": "MIT",
-  "bugs": "https://github.com/marksmall/node-build-web-app/issues",
+  "bugs": "https://github.com/edina/angular-build/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:marksmall/node-build-web-app.git"
+    "url": "https://github.com/edina/angular-build.git"
   },
   "keywords": [
     "web",
