@@ -1,3 +1,5 @@
+* 0.7.1
+  * In prod keep CSS and JS in the same folder as dev.
 * 0.7.0
   * Renamed project since this has been forked, starting a new minor version for this.
 * 0.6.9
