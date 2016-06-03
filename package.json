@@ -119,6 +119,19 @@
     "npm": ">=3.8.6"
   },
   "main": "dist/index.js",
+  "maintainers": [{
+    "email": "m.small@ed.ac.uk",
+    "name": "Mark Small"
+  }, {
+    "email": "andrew.seales@ed.ac.uk",
+    "name": "Andrew Seales"
+  }, {
+    "email": "robert.villa@ed.ac.uk",
+    "name": "Robert Villa"
+  }, {
+    "email": "john.pinto@ed.ac.uk",
+    "name": "John Pinto"
+  }],
   "files": [
     "dist"
   ],
