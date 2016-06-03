@@ -78,8 +78,8 @@ let javascript = {
     ],
     srcDist: path.join(folders.temp, "/core/boot.js"),
     dest: folders.temp,
-    destDist: path.join(folders.dist, "/" + finalJsBundleName),
-    finalJsBundlePath: finalJsBundleName
+    destDist: path.join(folders.dist, folders.scripts, finalJsBundleName),
+    finalJsBundlePath: path.join(folders.scripts, finalJsBundleName)
 };
 
 let typescript = {
@@ -107,11 +107,11 @@ let styles = {
     ],
     dest: folders.temp, // for DEV
     destFiles: path.join(folders.temp, globs.styles.css), // for DEV
-    destDist: folders.dist, // for PROD
+    destDist: path.join(folders.dist, folders.styles), // for PROD
     finalCssBundleFilename: finalCSSBundleName,
-    finalCssBundlePath: finalCSSBundleName,
+    finalCssBundlePath: path.join(folders.styles, finalCSSBundleName),
     finalVendorCssBundleFilename: finalCSSVendorBundleName,
-    finalVendorCssBundlePath: finalCSSVendorBundleName
+    finalVendorCssBundlePath: path.join(folders.styles, finalCSSVendorBundleName)
 };
 
 let images = {
