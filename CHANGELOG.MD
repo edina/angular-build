@@ -1,3 +1,5 @@
+* 0.7.2
+  * Version CSS and JS in prod so they can be cached easier.
 * 0.7.1
   * In prod keep CSS and JS in the same folder as dev.
 * 0.7.0
