@@ -89,8 +89,9 @@ let typescript = {
     dest: folders.temp // JavaScript code is emitted in the temp folder
 };
 
-let finalCSSBundleName = "bundle.min.css";
-let finalCSSVendorBundleName = "vendor.min.css";
+let buildTime = new Date().toISOString().replace(/-|:/g, "");
+let finalCSSBundleName = "bundle.min." + buildTime + ".css";
+let finalCSSVendorBundleName = "vendor.min." + buildTime + ".css";
 
 let styles = {
     src: [
