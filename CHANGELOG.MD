@@ -1,3 +1,5 @@
+* 0.7.3
+  * Oops forgot to include build name in JS file.
 * 0.7.2
   * Version CSS and JS in prod so they can be cached easier.
 * 0.7.1
