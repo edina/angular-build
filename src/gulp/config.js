@@ -72,7 +72,7 @@ let webServerNames = {
 
 let buildTime = new Date().toISOString().replace(/-|:/g, "");
 
-let finalJsBundleName = "bundle.min." + builtTime + ".js";
+let finalJsBundleName = "bundle.min." + buildTime + ".js";
 
 let javascript = {
     src: [
