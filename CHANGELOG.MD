@@ -1,3 +1,6 @@
+* 0.7 4
+  * Fix vendor.css incorrectly being duplicated in bundle.css.
+  * Typo in build name parameter.
 * 0.7.3
   * Oops forgot to include build name in JS file.
 * 0.7.2
