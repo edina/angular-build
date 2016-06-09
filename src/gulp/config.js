@@ -70,7 +70,9 @@ let webServerNames = {
     dist: "MDW_DIST"
 };
 
-let finalJsBundleName = "bundle.min.js";
+let buildTime = new Date().toISOString().replace(/-|:/g, "");
+
+let finalJsBundleName = "bundle.min." + builtTime + ".js";
 
 let javascript = {
     src: [
@@ -89,7 +91,6 @@ let typescript = {
     dest: folders.temp // JavaScript code is emitted in the temp folder
 };
 
-let buildTime = new Date().toISOString().replace(/-|:/g, "");
 let finalCSSBundleName = "bundle.min." + buildTime + ".css";
 let finalCSSVendorBundleName = "vendor.min." + buildTime + ".css";
 
