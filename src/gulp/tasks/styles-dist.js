@@ -3,6 +3,7 @@
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
 import utils from "../utils";
+import path from "path";
 
 import sass from "gulp-sass";
 import cssimport from "gulp-cssimport";
@@ -23,7 +24,7 @@ class StylesDistTaskLoader extends AbstractTaskLoader {
                 src = [
                     gulp.options.folders.app + config.globs.styles.css,
                     gulp.options.folders.app + config.globs.styles.sass,
-                    utils.exclude(gulp.options.folders.app + config.globs.styles.vendor)
+                    utils.exclude(path.join(gulp.options.folders.app, config.globs.styles.vendor))
                 ];
             } else{
                 src = config.styles.srcWithoutVendor;
