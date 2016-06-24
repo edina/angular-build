@@ -1,5 +1,6 @@
 "use strict";
 
+import gutil from "gulp-util";
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
 import utils from "../utils";
@@ -141,7 +142,9 @@ class ServeTaskLoader extends AbstractTaskLoader {
         gulp.task("prepare-serve", "Do all the necessary preparatory work for the serve task", () =>{
             // Only run the proxy task if there is configuration for it, the proxy task is mandatory if
             // the proxy configuration is present.
-            if(gulp.options.proxy){
+            gutil.log(gutil.colors.green("'Run Proxy Task: " + gulp.options.proxy.start));
+
+            if(gulp.options.proxy.start){
                 return runSequence([
                     "clean",
                     "ts-lint",

@@ -67,7 +67,7 @@ class ServeDistTaskLoader extends AbstractTaskLoader {
         gulp.task("serve-dist", "Build and serve the production version (i.e., 'dist' folder contents", () =>{
             let tasks = [ "default" ];
 
-            if(gulp.options.proxy){
+            if(gulp.options.proxy.start){
                 tasks.unshift("proxy");
             }
 
