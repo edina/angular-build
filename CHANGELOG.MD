@@ -1,3 +1,5 @@
+* 0.7 5
+  * Add capability to proxy to another server, not just the Dev API.
 * 0.7 4
   * Fix vendor.css incorrectly being duplicated in bundle.css.
   * Typo in build name parameter.
