@@ -1,3 +1,5 @@
+* 0.7.6
+  * Upgrade gulp-tslint to version which supports 'extends' in the tslint.json file.
 * 0.7 5
   * Add capability to proxy to another server, not just the Dev API.
 * 0.7 4
