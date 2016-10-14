@@ -21,6 +21,7 @@ let folders = {
     root: ".",
     dist: "./dist",
     temp: "./.tmp",
+    aot: "./.aot",
     app: "./app",
     styles: "./styles",
     scripts: "./scripts",

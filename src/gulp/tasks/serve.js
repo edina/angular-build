@@ -74,10 +74,11 @@ class ServeTaskLoader extends AbstractTaskLoader {
         let baseDir = null;
 
         if(gulp.options.folders){
-            baseDir = config.webServerFolders.dev.concat([ gulp.options.folders.app ]);
+            baseDir = config.webServerFolders.dev.concat([ gulp.options.folders.app, gulp.options.folders.aot ]);
         } else{
-            baseDir = config.webServerFolders.dev;
+            baseDir = config.webServerFolders.dev.concat([ gulp.options.folders.aot ]);
         }
+        gutil.log(gutil.colors.green("'BASEDIR: " + baseDir));
 
         let browserSyncOptions = { // http://www.browsersync.io/docs/options/
             notify: false,
