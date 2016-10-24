@@ -37,6 +37,7 @@
     "sass"
   ],
   "devDependencies": {
+    "gulp-filter": "^4.0.0",
     "jasmine": "2.4.x",
     "karma-jasmine": "0.3.x"
   },
