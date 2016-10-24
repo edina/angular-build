@@ -12,8 +12,8 @@ class DefaultTaskLoader extends AbstractTaskLoader {
         runSequence = runSequence.use(gulp); // needed to bind to the correct gulp object (alternative is to pass gulp to runSequence as first argument)
 
         gulp.task("default", "Build production files", () =>{
-            return runSequence("validate-package-json", [
-                    "clean",
+            return runSequence("validate-package-json",
+                "clean", [
                     "ts-lint",
                     "check-js-style",
                     "check-js-quality"
