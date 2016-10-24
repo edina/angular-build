@@ -1,3 +1,5 @@
+* 0.7.7
+  * Add support for compiling NGFactories for Angular AOT.
 * 0.7.6
   * Upgrade gulp-tslint to version which supports 'extends' in the tslint.json file.
 * 0.7 5
