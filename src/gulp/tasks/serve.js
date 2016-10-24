@@ -115,12 +115,15 @@ class ServeTaskLoader extends AbstractTaskLoader {
 
         if(gulp.options.folders){
             html = [ gulp.options.folders.app + config.globs.html ];
-            typescript = [ gulp.options.folders.app + config.globs.scripts.typescript ];
+            typescript = [
+                gulp.options.folders.app + config.globs.scripts.typescript,
+                "!" + gulp.options.folders.app + config.globs.scripts.ngFactories
+            ];
             javascript = [ gulp.options.folders.app + config.globs.scripts.javascript ];
             images = [ gulp.options.folders.app + config.globs.images ];
         } else{
             html = config.html.src;
-            typescript = config.typescript.srcAppOnly;
+            typescript = [ config.typescript.srcAppOnly, "!" + config.folders.app + config.globs.scripts.ngFactories ];
             javascript = config.javascript.src;
             images = config.images.src;
         }
