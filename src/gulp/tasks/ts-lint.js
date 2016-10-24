@@ -18,7 +18,7 @@ class TsLintTaskLoader extends AbstractTaskLoader {
 
         gulp.task("ts-lint", "Lint TypeScript code", () =>{
             let src = null;
-            const noNgFactory = filter([ "**/*.ts", "!**/*.ngfactory.ts" ]);
+            const noNgFactory = filter([ config.globs.scripts.typescript, "!" + config.globs.scripts.ngFactories ]);
 
             if(gulp.options.folders){
                 src = [ gulp.options.folders.app + config.globs.scripts.typescript ];

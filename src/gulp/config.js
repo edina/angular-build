@@ -6,6 +6,7 @@ import path from "path";
 let extensions = {
     javascript: ".js",
     typescript: ".ts",
+    ngfactories: ".ngfactory.ts",
     css: ".css",
     sass: ".scss",
     html: ".html",
@@ -34,7 +35,8 @@ let globs = {
     any: "/**/*",
     scripts: {
         javascript: "/**/*" + extensions.javascript,
-        typescript: "/**/*" + extensions.typescript
+        typescript: "/**/*" + extensions.typescript,
+        ngFactories: "/**/*" + extensions.ngfactories
     },
     styles: {
         css: "/**/*" + extensions.css,
