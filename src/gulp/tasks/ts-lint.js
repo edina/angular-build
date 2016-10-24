@@ -7,6 +7,7 @@ import config from "../config";
 import tslint from "gulp-tslint";
 import iff from "gulp-if";
 import size from "gulp-size";
+import filter from "gulp-filter";
 //import debug from "gulp-debug";
 
 let browserSync = require("browser-sync").get(config.webServerNames.dev);
@@ -17,6 +18,7 @@ class TsLintTaskLoader extends AbstractTaskLoader {
 
         gulp.task("ts-lint", "Lint TypeScript code", () =>{
             let src = null;
+            const noNgFactory = filter([ "**/*.ts", "!**/*.ngfactory.ts" ]);
 
             if(gulp.options.folders){
                 src = [ gulp.options.folders.app + config.globs.scripts.typescript ];
@@ -27,6 +29,9 @@ class TsLintTaskLoader extends AbstractTaskLoader {
             return gulp.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
                 src // only the application's code needs to be checked
                 )
+
+                // Don't tslint generated code
+                .pipe(noNgFactory)
 
                 // Display the files in the stream
                 //.pipe(debug({title: "Stream contents:", minimal: true}))

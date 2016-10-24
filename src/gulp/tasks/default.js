@@ -16,7 +16,8 @@ class DefaultTaskLoader extends AbstractTaskLoader {
                     "clean",
                     "ts-lint",
                     "check-js-style",
-                    "check-js-quality"
+                    "check-js-quality",
+                    "scripts-ngc"
                 ], [
                     "scripts-typescript",
                     "scripts-javascript"
