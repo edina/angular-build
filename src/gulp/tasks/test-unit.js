@@ -40,7 +40,8 @@ class TestUnitTaskLoader extends AbstractTaskLoader {
                 "check-js-quality"
             ], [
                 "scripts-typescript",
-                "scripts-javascript"
+                "scripts-javascript",
+                "test-html-copy"
             ]);
         });
     }
