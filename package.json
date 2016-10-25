@@ -37,7 +37,6 @@
     "sass"
   ],
   "devDependencies": {
-    "gulp-filter": "^4.0.0",
     "jasmine": "2.4.x",
     "karma-jasmine": "0.3.x"
   },
@@ -60,6 +59,7 @@
     "gulp-cssimport": "3.0.x",
     "gulp-csso": "2.0.x",
     "gulp-debug": "2.1.x",
+    "gulp-filter": "^4.0.0",
     "gulp-flatten": "0.2.x",
     "gulp-help": "1.6.x",
     "gulp-html-replace": "1.5.x",
