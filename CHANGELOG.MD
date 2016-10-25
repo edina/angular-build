@@ -1,3 +1,5 @@
+* 0.7.9
+  * Fix dependency issue with gulp-filter
 * 0.7.8
   * Fix issue with unit test prep not copying HTML templates.
 * 0.7.7
