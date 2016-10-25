@@ -1,3 +1,5 @@
+* 0.7.8
+  * Fix issue with unit test prep not copying HTML templates.
 * 0.7.7
   * Add support for compiling NGFactories for Angular AOT.
 * 0.7.6

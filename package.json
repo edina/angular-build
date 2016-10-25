@@ -1,7 +1,7 @@
 {
   "name": "angular-build",
   "description": "Build Angular 2/JSPM with Gulp. Forked from ModernWebDevBuild.",
-  "version": "0.7.7",
+  "version": "0.7.8",
   "author": {
     "name": "Mark Small",
     "email": "m.small@ed.ac.uk"
