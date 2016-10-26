@@ -10,7 +10,7 @@ branches:
 notifications:
   email: true
 node_js:
-  - '4.4.2'
+  - '6.9.1'
 before_script:
   - npm prune
 before_install:

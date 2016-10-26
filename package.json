@@ -116,8 +116,8 @@
     "gulp": "3.9.x"
   },
   "engines": {
-    "node": ">=4.4.2",
-    "npm": ">=3.8.6"
+    "node": ">=6.9.1",
+    "npm": ">=3.10.7"
   },
   "main": "dist/index.js",
   "maintainers": [{
