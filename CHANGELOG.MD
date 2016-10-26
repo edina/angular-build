@@ -1,3 +1,5 @@
+* 0.7.11
+  * Fix bug in ts-lint task, introduced by dependency upgrade.
 * 0.7.10
   * Upgrade to latest Node LTS (6.9.1)
   * Upgrade outdated dependencies to latest versions.
