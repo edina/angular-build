@@ -31,9 +31,7 @@ class ScriptsTypeScriptTaskLoader extends AbstractTaskLoader {
                 // Display the files in the stream
                 //.pipe(debug({title: "Stream contents:", minimal: true}))
                 .pipe(sourcemaps.init())
-                .pipe(ts(
-                    tsProject
-                ));
+                .pipe(tsProject());
 
             // Output type definition files
             tsResult.dts.pipe(gulp.dest(tsConfigOutDir));
