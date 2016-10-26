@@ -1,3 +1,6 @@
+* 0.7.10
+  * Upgrade to latest Node LTS (6.9.1)
+  * Upgrade outdated dependencies to latest versions.
 * 0.7.9
   * Fix dependency issue with gulp-filter
 * 0.7.8
