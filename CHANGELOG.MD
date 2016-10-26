@@ -1,3 +1,6 @@
+* 0.7.12
+  * Fix breaking changes in ts-lint and scripts-typescript tasks, introduced
+    by dependency upgrade.
 * 0.7.11
   * Fix bug in ts-lint task, introduced by dependency upgrade.
 * 0.7.10
