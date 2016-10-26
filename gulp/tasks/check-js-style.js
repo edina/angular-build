@@ -24,7 +24,6 @@ gulp.task("check-js-style", "Enforce JavaScript code style", () =>{
         .pipe(
             jscs({
                 configPath: config.folders.root + "/.jscsrc", // required otherwise the configuration didn't seem to get loaded
-                esnext: true, // seems broken: https://github.com/jscs-dev/gulp-jscs/issues/69
                 fix: false
             })
         )

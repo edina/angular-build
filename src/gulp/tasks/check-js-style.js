@@ -27,7 +27,6 @@ class CheckJsStyleTaskLoader extends AbstractTaskLoader {
                 // Check JS code style (uses .jscsrc)
                 .pipe(
                     jscs({
-                        esnext: true, // seems broken: https://github.com/jscs-dev/gulp-jscs/issues/69
                         fix: false
                     })
                 )
