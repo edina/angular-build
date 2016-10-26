@@ -29,9 +29,7 @@ class StylesTaskLoader extends AbstractTaskLoader {
                 //.pipe(debug({title: "Stream contents:", minimal: true}))
 
                 // Initialize sourcemap generation
-                .pipe(sourcemaps.init({
-                    //debug: true
-                }))
+                .pipe(sourcemaps.init({/*debug: true*/}))
 
                 // Process the sass files
                 .pipe(sass({

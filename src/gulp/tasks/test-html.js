@@ -2,9 +2,7 @@
 
 import AbstractTaskLoader from "../abstractTaskLoader";
 import config from "../config";
-import utils from "../utils";
 
-import eventStream from "event-stream";
 import size from "gulp-size";
 // import debug from "gulp-debug";
 

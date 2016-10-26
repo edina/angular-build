@@ -26,8 +26,8 @@ class SassLintTaskLoader extends AbstractTaskLoader {
 
                 // Check the code quality
                 .pipe(sassLint())
-				.pipe(sassLint.format())
-				.pipe(sassLint.failOnError())
+                .pipe(sassLint.format())
+                .pipe(sassLint.failOnError())
 
                 // Task result
                 .pipe(size({
