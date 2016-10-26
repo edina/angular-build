@@ -882,6 +882,7 @@ The project includes multiple configuration files. Here's some information about
 * update CHANGELOG.MD
 * commit
 * git tag <version>
+* git push
 * git push --tags
 * draft the release on GitHub (add description, etc)
 * npm publish
