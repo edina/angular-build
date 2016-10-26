@@ -37,11 +37,11 @@ class TsLintTaskLoader extends AbstractTaskLoader {
                 //.pipe(debug({title: "Stream contents:", minimal: true}))
 
                 // Check the code quality
-                .pipe(tslint())
+                .pipe(tslint({formatter: "prose"}))
 
                 // Fail the build only if BrowserSync is not active
-                .pipe(iff(!browserSync.active, tslint.report("prose")))
-                .pipe(iff(browserSync.active, tslint.report("prose", {
+                .pipe(iff(!browserSync.active, tslint.report()))
+                .pipe(iff(browserSync.active, tslint.report({
                     emitError: false
                 })))
 
