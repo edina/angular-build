@@ -1,3 +1,5 @@
+* 0.7.14
+  * Added more dependencies projects using this Build System complain are missing.
 * 0.7.13
   * Added dependencies projects using this Build System complain are missing.
 * 0.7.12
