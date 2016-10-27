@@ -1,3 +1,5 @@
+* 0.7.13
+  * Added dependencies projects using this Build System complain are missing.
 * 0.7.12
   * Fix breaking changes in ts-lint and scripts-typescript tasks, introduced
     by dependency upgrade.
