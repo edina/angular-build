@@ -94,6 +94,8 @@
     "http-proxy-middleware": "^0.17.0",
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-svgo": "^5.2.0",
     "jshint": "^2.9.x",
     "jshint-stylish": "2.2.x",
     "jspm": "0.16.x",
