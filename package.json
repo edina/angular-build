@@ -6,16 +6,20 @@
     "name": "Mark Small",
     "email": "m.small@ed.ac.uk"
   },
-  "contributors": [{
-    "name": "Andrew Seales",
-    "email": "andrew.seales@ed.ac.uk"
-  }, {
-    "name": "John Pinto",
-    "email": "john.pinto@ed.ac.uk"
-  }, {
-    "name": "Robert Villa",
-    "email": "robert.villa@ed.ac.uk"
-  }],
+  "contributors": [
+    {
+      "name": "Andrew Seales",
+      "email": "andrew.seales@ed.ac.uk"
+    },
+    {
+      "name": "John Pinto",
+      "email": "john.pinto@ed.ac.uk"
+    },
+    {
+      "name": "Robert Villa",
+      "email": "robert.villa@ed.ac.uk"
+    }
+  ],
   "homepage": "https://github.com/edina/angular-build",
   "private": false,
   "license": "MIT",
@@ -88,6 +92,8 @@
     "gulp-uncss": "1.0.x",
     "gulp-util": "3.0.x",
     "http-proxy-middleware": "^0.17.0",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
     "jshint": "^2.9.x",
     "jshint-stylish": "2.2.x",
     "jspm": "0.16.x",
@@ -100,8 +106,8 @@
     "karma-phantomjs-launcher": "1.0.x",
     "karma-spec-reporter": "0.0.x",
     "karma-systemjs": "0.15.x",
-    "nodemon": "1.11.x",
     "node-sass": "3.10.x",
+    "nodemon": "1.11.x",
     "opn": "4.0.x",
     "phantomjs-polyfill": "0.0.x",
     "phantomjs-prebuilt": "^2.1.x",
@@ -120,19 +126,24 @@
     "npm": ">=3.10.7"
   },
   "main": "dist/index.js",
-  "maintainers": [{
-    "email": "m.small@ed.ac.uk",
-    "name": "Mark Small"
-  }, {
-    "email": "andrew.seales@ed.ac.uk",
-    "name": "Andrew Seales"
-  }, {
-    "email": "robert.villa@ed.ac.uk",
-    "name": "Robert Villa"
-  }, {
-    "email": "john.pinto@ed.ac.uk",
-    "name": "John Pinto"
-  }],
+  "maintainers": [
+    {
+      "email": "m.small@ed.ac.uk",
+      "name": "Mark Small"
+    },
+    {
+      "email": "andrew.seales@ed.ac.uk",
+      "name": "Andrew Seales"
+    },
+    {
+      "email": "robert.villa@ed.ac.uk",
+      "name": "Robert Villa"
+    },
+    {
+      "email": "john.pinto@ed.ac.uk",
+      "name": "John Pinto"
+    }
+  ],
   "files": [
     "dist"
   ],
