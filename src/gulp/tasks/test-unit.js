@@ -29,6 +29,7 @@ class TestUnitTaskLoader extends AbstractTaskLoader {
 
         gulp.task("test-unit-dev", "Execute all unit tests continuously (watches files)", (callback) =>{
             options.singleRun = false;
+
             return utils.getKarmaServer(options, callback);
         });
 
